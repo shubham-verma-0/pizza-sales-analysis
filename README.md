@@ -1,123 +1,202 @@
-select * from pizza_sales -- all data with show this code 
--- A. KPI’s
+# Pizza Sales Analysis
 
----1. Total Revenue:
+## Business Problem
+A pizza restaurant wants to analyze its sales data to understand revenue drivers, customer ordering patterns, and product performance in order to improve business decisions.
 
-SELECT SUM(total_price) AS Total_Revenue FROM pizza_sales;
+## Objectives
+- Measure overall sales and revenue performance
+- Identify high-performing and low-performing pizzas
+- Analyze order trends across days and months
+- Understand customer purchasing behavior
 
----2. Average Order Value
-SELECT (SUM(total_price) / COUNT(DISTINCT order_id)) AS Avg_order_Value FROM pizza_sales
+## Dataset Overview
+The dataset contains transactional pizza sales data with:
+- Order ID & Order Date
+- Pizza Name, Category, and Size
+- Quantity Sold
+- Total Price
 
----3. Total Pizzas Sold
-SELECT SUM(CAST(quantity AS INT)) AS Total_pizza_sold FROM pizza_sales;
---- ye alternative code hai task 3 ka 
--- SELECT SUM(CONVERT(INT, quantity)) AS Total_pizza_sold FROM pizza_sales;
+The dataset represents historical pizza sales transactions from a restaurant.
 
---4. Total Orders
+## Tools Used
+- SQL (Data aggregation and analysis)
+- Power BI / Excel (for visualization – optional)
 
-SELECT COUNT(DISTINCT order_id) AS Total_Orders FROM pizza_sales
+## Analysis Summary
+The analysis focuses on:
+- Key business KPIs (Revenue, Orders, AOV)
+- Time-based trends (Daily & Monthly)
+- Revenue contribution by pizza category and size
+- Top and bottom performing products
 
---5. Average Pizzas Per Order
+## Key Insights
+- A small number of pizzas contribute a significant portion of total revenue
+- Certain pizza categories consistently outperform others
+- Weekends generate higher order volumes compared to weekdays
+- Some pizzas show low demand but still occupy menu space
 
+## Business Recommendations
+- Focus marketing and promotions on top-performing pizzas
+- Optimize inventory for high-demand categories
+- Re-evaluate or redesign low-performing pizzas
+- Align staffing and operations with peak demand days
+
+## Key Results
+- Overall revenue and order-level KPIs were successfully calculated using SQL
+- Average order value and average pizzas per order highlight customer purchasing behavior
+- Weekend demand is higher compared to weekdays
+- Top 5 pizzas contribute a major share of total revenue
+
+## SQL Queries & Analysis
+The following SQL queries were used to derive business insights from the pizza sales dataset.
+
+```sql
+-- =========================================================
+-- Pizza Sales Analysis | SQL Queries
+-- =========================================================
+
+-- A. Key Performance Indicators (KPIs)
+
+-- 1. Total Revenue
 SELECT 
-  CAST(
-    CAST(SUM(CAST(quantity AS INT)) AS DECIMAL(10,2)) / 
-    CAST(COUNT(DISTINCT order_id) AS DECIMAL(10,2)) 
-  AS DECIMAL(10,2)) AS Avg_Pizzas_per_order
+    SUM(total_price) AS total_revenue
 FROM pizza_sales;
 
---- B. Daily Trend for Total Orders / sequence wise day 
- SELECT 
-    DATENAME(WEEKDAY, order_date) AS order_day, 
+-- 2. Average Order Value (AOV)
+SELECT 
+    SUM(total_price) / COUNT(DISTINCT order_id) AS avg_order_value
+FROM pizza_sales;
+
+-- 3. Total Pizzas Sold
+SELECT 
+    SUM(CAST(quantity AS INT)) AS total_pizzas_sold
+FROM pizza_sales;
+
+-- 4. Total Orders
+SELECT 
+    COUNT(DISTINCT order_id) AS total_orders
+FROM pizza_sales;
+
+-- 5. Average Pizzas per Order
+SELECT 
+    CAST(
+        SUM(CAST(quantity AS INT)) * 1.0 / COUNT(DISTINCT order_id)
+        AS DECIMAL(10,2)
+    ) AS avg_pizzas_per_order
+FROM pizza_sales;
+
+-- B. Daily Trend of Orders
+SELECT 
+    DATENAME(WEEKDAY, order_date) AS order_day,
     COUNT(DISTINCT order_id) AS total_orders
 FROM pizza_sales
-GROUP BY DATEPART(WEEKDAY, order_date), DATENAME(WEEKDAY, order_date)
-ORDER BY DATEPART(WEEKDAY, order_date);
+GROUP BY 
+    DATEPART(WEEKDAY, order_date),
+    DATENAME(WEEKDAY, order_date)
+ORDER BY 
+    DATEPART(WEEKDAY, order_date);
 
---- C Monthly Trend for Orders
+-- C. Monthly Trend of Orders
 SELECT 
-  DATENAME(MONTH, order_date) AS Month_Name,
-  COUNT(DISTINCT order_id) AS Total_Orders
+    DATENAME(MONTH, order_date) AS month_name,
+    COUNT(DISTINCT order_id) AS total_orders
 FROM pizza_sales
 GROUP BY 
-  DATENAME(MONTH, order_date),
-  MONTH(order_date)
+    DATENAME(MONTH, order_date),
+    MONTH(order_date)
 ORDER BY 
-  MONTH(order_date);
+    MONTH(order_date);
 
-  ---D. % of Sales by Pizza Category
-
-SELECT pizza_category, CAST(SUM(total_price) AS DECIMAL(10,2)) as total_revenue,
-CAST(SUM(total_price) * 100 / (SELECT SUM(total_price) from pizza_sales) AS DECIMAL(10,2)) AS PCT
+-- D. Revenue Contribution by Pizza Category (%)
+SELECT 
+    pizza_category,
+    CAST(SUM(total_price) AS DECIMAL(10,2)) AS total_revenue,
+    CAST(
+        SUM(total_price) * 100.0 / 
+        (SELECT SUM(total_price) FROM pizza_sales)
+        AS DECIMAL(10,2)
+    ) AS revenue_percentage
 FROM pizza_sales
-GROUP BY pizza_category
+GROUP BY pizza_category;
 
---E. % of Sales by Pizza Size
-SELECT pizza_size, CAST(SUM(total_price) AS DECIMAL(10,2)) as total_revenue,
-CAST(SUM(total_price) * 100 / (SELECT SUM(total_price) from pizza_sales) AS DECIMAL(10,2)) AS PCT
-
+-- E. Revenue Contribution by Pizza Size (%)
+SELECT 
+    pizza_size,
+    CAST(SUM(total_price) AS DECIMAL(10,2)) AS total_revenue,
+    CAST(
+        SUM(total_price) * 100.0 / 
+        (SELECT SUM(total_price) FROM pizza_sales)
+        AS DECIMAL(10,2)
+    ) AS revenue_percentage
 FROM pizza_sales
 GROUP BY pizza_size
-ORDER BY pizza_size
- 
----- F. Total Pizzas Sold by Pizza Category
-SELECT pizza_category, 
-       SUM(CAST(quantity AS INT)) AS Total_Quantity_Sold
+ORDER BY pizza_size;
+
+-- F. Total Pizzas Sold by Category
+SELECT 
+    pizza_category,
+    SUM(CAST(quantity AS INT)) AS total_quantity_sold
 FROM pizza_sales
 GROUP BY pizza_category
-ORDER BY Total_Quantity_Sold DESC;
+ORDER BY total_quantity_sold DESC;
 
----G. Top 5 Pizzas by Revenue
-SELECT  pizza_name, SUM(total_price) AS Total_Revenue
+-- G. Top 5 Pizzas by Revenue
+SELECT TOP 5
+    pizza_name,
+    SUM(total_price) AS total_revenue
 FROM pizza_sales
 GROUP BY pizza_name
----- above all pizza_ revenue /// 
---- below top 5 only
-SELECT top 5  pizza_name, SUM(total_price) AS Total_Revenue
+ORDER BY total_revenue DESC;
+
+-- H. Bottom 5 Pizzas by Revenue
+SELECT TOP 5
+    pizza_name,
+    SUM(total_price) AS total_revenue
 FROM pizza_sales
 GROUP BY pizza_name
-ORDER BY Total_Revenue DESC
+ORDER BY total_revenue ASC;
 
----H. Bottom 5 Pizzas by Revenue
-
-SELECT Top 5 pizza_name, SUM(total_price) AS Total_Revenue
+-- I. Top 5 Pizzas by Quantity Sold
+SELECT TOP 5
+    pizza_name,
+    SUM(CAST(quantity AS INT)) AS total_pizzas_sold
 FROM pizza_sales
 GROUP BY pizza_name
-ORDER BY Total_Revenue ASC
+ORDER BY total_pizzas_sold DESC;
 
-
----I. Top 5 Pizzas by Quantity
-SELECT TOP 5 pizza_name, 
-       SUM(CAST(quantity AS INT)) AS Total_Pizza_Sold
+-- J. Bottom 5 Pizzas by Quantity Sold
+SELECT TOP 5
+    pizza_name,
+    SUM(CAST(quantity AS INT)) AS total_pizzas_sold
 FROM pizza_sales
 GROUP BY pizza_name
-ORDER BY Total_Pizza_Sold DESC;
+ORDER BY total_pizzas_sold ASC;
 
--- J. Bottom 5 Pizzas by Quantity
-
-SELECT TOP 5 
-    pizza_name, 
-    SUM(CAST(quantity AS INT)) AS Total_Pizza_Sold
+-- K. Top 5 Pizzas by Total Orders
+SELECT TOP 5
+    pizza_name,
+    COUNT(DISTINCT order_id) AS total_orders
 FROM pizza_sales
 GROUP BY pizza_name
-ORDER BY Total_Pizza_Sold ASC;
+ORDER BY total_orders DESC;
 
----K. Top 5 Pizzas by Total Orders
-
-SELECT Top 5 pizza_name, COUNT(DISTINCT order_id) AS Total_Orders
+-- L. Bottom 5 Pizzas by Total Orders
+SELECT TOP 5
+    pizza_name,
+    COUNT(DISTINCT order_id) AS total_orders
 FROM pizza_sales
 GROUP BY pizza_name
-ORDER BY Total_Orders DESC
+ORDER BY total_orders ASC;
 
----L. Borrom 5 Pizzas by Total Orders
-
-SELECT Top 5 pizza_name, COUNT(DISTINCT order_id) AS Total_Orders
-FROM pizza_sales
-GROUP BY pizza_name
-ORDER BY Total_Orders ASC
-
-SELECT Top 5 pizza_name, COUNT(DISTINCT order_id) AS Total_Orders
+-- M. Bottom 5 Classic Pizzas by Total Orders
+SELECT TOP 5
+    pizza_name,
+    COUNT(DISTINCT order_id) AS total_orders
 FROM pizza_sales
 WHERE pizza_category = 'Classic'
 GROUP BY pizza_name
-ORDER BY Total_Orders ASC
+ORDER BY total_orders ASC;
+
+```
+## Conclusion
+This project demonstrates how SQL can be used to transform raw transactional sales data into actionable business insights that support data-driven decision-making.
