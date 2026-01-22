@@ -28,7 +28,7 @@ This section explains the key insights derived from the Power BI dashboard, alon
 
 1. Overall Business Performance (KPIs)
 
-![KPI Dashboard](images/dashboard.png)
+![KPI Dashboard](KPI.png)
 
 - **Total Revenue:** ~$817.86K  
 - **Total Orders:** ~21,350  
