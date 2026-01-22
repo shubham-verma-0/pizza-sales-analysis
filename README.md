@@ -1,8 +1,4 @@
 # Pizza Sales Analysis
-## 📌 Problem Statement & Chart Requirements
-
-![Problem Statement](problem_statement.png)
-
 
 ## Business Problem
 A pizza restaurant wants to analyze its sales data to understand revenue drivers, customer ordering patterns, and product performance in order to improve business decisions.
