@@ -1,12 +1,12 @@
 🍕 Pizza Sales Analysis
-*Overview*
+### Overview
 
 In this project, I analyzed pizza sales data to understand overall business performance, customer ordering behavior, and product-level trends.
 The goal of this analysis was to convert raw transactional data into clear business insights that can support decision-making related to sales, inventory, and operations.
 
 I used SQL for data analysis and Power BI for dashboard-based visualization, following a real-world analytics workflow.
 
->>>>>Business Problem
+### Business Problem
 
 A pizza restaurant wants to answer key business questions such as:
 Which pizzas generate the most and least revenue?
@@ -14,7 +14,7 @@ When do customers place the highest number of orders?
 How do pizza size and category affect sales performance?
 Which products should be promoted or reconsidered?
 
->>>>> Objectives
+### Objectives
 
 Measure overall sales and revenue performance
 Identify high-performing and low-performing pizzas
@@ -36,7 +36,7 @@ This section explains the key insights derived from the Power BI dashboard, alon
 - **Average Order Value (AOV):** ~$38.31  
 - **Average Pizzas per Order:** ~2.32
   
->>>>> Insight
+### Insight
 
 Customers typically order more than one pizza per order, indicating group or family-based purchasing behavior rather than individual orders.
 Business Reason
