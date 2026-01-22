@@ -1,202 +1,210 @@
-# Pizza Sales Analysis
+🍕 Pizza Sales Analysis
+*Overview*
 
-## Business Problem
-A pizza restaurant wants to analyze its sales data to understand revenue drivers, customer ordering patterns, and product performance in order to improve business decisions.
+In this project, I analyzed pizza sales data to understand overall business performance, customer ordering behavior, and product-level trends.
+The goal of this analysis was to convert raw transactional data into clear business insights that can support decision-making related to sales, inventory, and operations.
 
-## Objectives
-- Measure overall sales and revenue performance
-- Identify high-performing and low-performing pizzas
-- Analyze order trends across days and months
-- Understand customer purchasing behavior
+I used SQL for data analysis and Power BI for dashboard-based visualization, following a real-world analytics workflow.
 
-## Dataset Overview
-The dataset contains transactional pizza sales data with:
-- Order ID & Order Date
-- Pizza Name, Category, and Size
-- Quantity Sold
-- Total Price
+>>>>>Business Problem
 
-The dataset represents historical pizza sales transactions from a restaurant.
+A pizza restaurant wants to answer key business questions such as:
+Which pizzas generate the most and least revenue?
+When do customers place the highest number of orders?
+How do pizza size and category affect sales performance?
+Which products should be promoted or reconsidered?
 
-## Tools Used
-- SQL (Data aggregation and analysis)
-- Power BI / Excel (for visualization – optional)
+>>>>> Objectives
 
-## Analysis Summary
-The analysis focuses on:
-- Key business KPIs (Revenue, Orders, AOV)
-- Time-based trends (Daily & Monthly)
-- Revenue contribution by pizza category and size
-- Top and bottom performing products
+Measure overall sales and revenue performance
+Identify high-performing and low-performing pizzas
+Analyze order trends across days and months
+Understand customer purchasing behavior
 
-## Key Insights
-- A small number of pizzas contribute a significant portion of total revenue
-- Certain pizza categories consistently outperform others
-- Weekends generate higher order volumes compared to weekdays
-- Some pizzas show low demand but still occupy menu space
+📊 Insights & Storytelling (Dashboard Interpretation)
 
-## Business Recommendations
-- Focus marketing and promotions on top-performing pizzas
-- Optimize inventory for high-demand categories
-- Re-evaluate or redesign low-performing pizzas
-- Align staffing and operations with peak demand days
 
-## Key Results
-- Overall revenue and order-level KPIs were successfully calculated using SQL
-- Average order value and average pizzas per order highlight customer purchasing behavior
-- Weekend demand is higher compared to weekdays
-- Top 5 pizzas contribute a major share of total revenue
+This section explains the key insights derived from the Power BI dashboard, along with the possible business reasons behind observed trends. The focus is on business interpretation, not just numbers.
 
-## SQL Queries & Analysis
-The following SQL queries were used to derive business insights from the pizza sales dataset.
+1. Overall Business Performance (KPIs)
+   ![KPI view's](images/dashboard.png)
 
-```sql
--- =========================================================
--- Pizza Sales Analysis | SQL Queries
--- =========================================================
+- **Total Revenue:** ~$817.86K  
+- **Total Orders:** ~21,350  
+- **Total Pizzas Sold:** ~49,574  
+- **Average Order Value (AOV):** ~$38.31  
+- **Average Pizzas per Order:** ~2.32
+  
+>>>>> Insight
 
--- A. Key Performance Indicators (KPIs)
+Customers typically order more than one pizza per order, indicating group or family-based purchasing behavior rather than individual orders.
+Business Reason
+Pizza is often consumed in groups, especially during weekends and evenings, which increases both order value and quantity per order.
 
--- 1. Total Revenue
-SELECT 
-    SUM(total_price) AS total_revenue
-FROM pizza_sales;
+2. Daily Order Trend (Weekday Analysis)
+Observation
 
--- 2. Average Order Value (AOV)
-SELECT 
-    SUM(total_price) / COUNT(DISTINCT order_id) AS avg_order_value
-FROM pizza_sales;
+Orders gradually increase from Sunday to Friday
 
--- 3. Total Pizzas Sold
-SELECT 
-    SUM(CAST(quantity AS INT)) AS total_pizzas_sold
-FROM pizza_sales;
+Friday has the highest number of orders
 
--- 4. Total Orders
-SELECT 
-    COUNT(DISTINCT order_id) AS total_orders
-FROM pizza_sales;
+Slight drop observed on Saturday
 
--- 5. Average Pizzas per Order
-SELECT 
-    CAST(
-        SUM(CAST(quantity AS INT)) * 1.0 / COUNT(DISTINCT order_id)
-        AS DECIMAL(10,2)
-    ) AS avg_pizzas_per_order
-FROM pizza_sales;
+Insight
 
--- B. Daily Trend of Orders
-SELECT 
-    DATENAME(WEEKDAY, order_date) AS order_day,
-    COUNT(DISTINCT order_id) AS total_orders
-FROM pizza_sales
-GROUP BY 
-    DATEPART(WEEKDAY, order_date),
-    DATENAME(WEEKDAY, order_date)
-ORDER BY 
-    DATEPART(WEEKDAY, order_date);
+Peak demand occurs on Friday and Saturday evenings
 
--- C. Monthly Trend of Orders
-SELECT 
-    DATENAME(MONTH, order_date) AS month_name,
-    COUNT(DISTINCT order_id) AS total_orders
-FROM pizza_sales
-GROUP BY 
-    DATENAME(MONTH, order_date),
-    MONTH(order_date)
-ORDER BY 
-    MONTH(order_date);
+Weekdays show stable but lower demand compared to weekends
 
--- D. Revenue Contribution by Pizza Category (%)
-SELECT 
-    pizza_category,
-    CAST(SUM(total_price) AS DECIMAL(10,2)) AS total_revenue,
-    CAST(
-        SUM(total_price) * 100.0 / 
-        (SELECT SUM(total_price) FROM pizza_sales)
-        AS DECIMAL(10,2)
-    ) AS revenue_percentage
-FROM pizza_sales
-GROUP BY pizza_category;
+Business Reason
 
--- E. Revenue Contribution by Pizza Size (%)
-SELECT 
-    pizza_size,
-    CAST(SUM(total_price) AS DECIMAL(10,2)) AS total_revenue,
-    CAST(
-        SUM(total_price) * 100.0 / 
-        (SELECT SUM(total_price) FROM pizza_sales)
-        AS DECIMAL(10,2)
-    ) AS revenue_percentage
-FROM pizza_sales
-GROUP BY pizza_size
-ORDER BY pizza_size;
+End-of-week social gatherings, office parties, and family dinners drive higher sales
 
--- F. Total Pizzas Sold by Category
-SELECT 
-    pizza_category,
-    SUM(CAST(quantity AS INT)) AS total_quantity_sold
-FROM pizza_sales
-GROUP BY pizza_category
-ORDER BY total_quantity_sold DESC;
+Saturday drop may be due to customers preferring dine-out or alternative food options
 
--- G. Top 5 Pizzas by Revenue
-SELECT TOP 5
-    pizza_name,
-    SUM(total_price) AS total_revenue
-FROM pizza_sales
-GROUP BY pizza_name
-ORDER BY total_revenue DESC;
+3. Monthly Order Trend (Seasonality)
 
--- H. Bottom 5 Pizzas by Revenue
-SELECT TOP 5
-    pizza_name,
-    SUM(total_price) AS total_revenue
-FROM pizza_sales
-GROUP BY pizza_name
-ORDER BY total_revenue ASC;
+Observation
 
--- I. Top 5 Pizzas by Quantity Sold
-SELECT TOP 5
-    pizza_name,
-    SUM(CAST(quantity AS INT)) AS total_pizzas_sold
-FROM pizza_sales
-GROUP BY pizza_name
-ORDER BY total_pizzas_sold DESC;
+July shows the highest order volume
 
--- J. Bottom 5 Pizzas by Quantity Sold
-SELECT TOP 5
-    pizza_name,
-    SUM(CAST(quantity AS INT)) AS total_pizzas_sold
-FROM pizza_sales
-GROUP BY pizza_name
-ORDER BY total_pizzas_sold ASC;
+Strong performance also seen in January
 
--- K. Top 5 Pizzas by Total Orders
-SELECT TOP 5
-    pizza_name,
-    COUNT(DISTINCT order_id) AS total_orders
-FROM pizza_sales
-GROUP BY pizza_name
-ORDER BY total_orders DESC;
+Noticeable dip during September and October
 
--- L. Bottom 5 Pizzas by Total Orders
-SELECT TOP 5
-    pizza_name,
-    COUNT(DISTINCT order_id) AS total_orders
-FROM pizza_sales
-GROUP BY pizza_name
-ORDER BY total_orders ASC;
+Insight
 
--- M. Bottom 5 Classic Pizzas by Total Orders
-SELECT TOP 5
-    pizza_name,
-    COUNT(DISTINCT order_id) AS total_orders
-FROM pizza_sales
-WHERE pizza_category = 'Classic'
-GROUP BY pizza_name
-ORDER BY total_orders ASC;
+Sales show seasonal patterns
 
-```
-## Conclusion
-This project demonstrates how SQL can be used to transform raw transactional sales data into actionable business insights that support data-driven decision-making.
+Certain months consistently outperform others
+
+Business Reason
+
+July: Holiday season, summer breaks, and increased leisure time
+
+January: New Year celebrations and promotional offers
+
+September–October: Festival spending shifts towards home-cooked or traditional foods
+
+4. Sales by Pizza Category
+
+Category Contribution
+
+Classic category contributes the highest revenue and orders
+
+Supreme and Chicken categories follow closely
+
+Veggie category contributes the least
+
+Insight
+
+Customers show a strong preference for classic and familiar flavors.
+
+Business Reason
+
+Classic pizzas appeal to a broader audience
+
+They are safer choices for group orders
+
+Veggie pizzas may cater to a smaller niche audience
+
+5. Sales by Pizza Size
+
+Size Contribution
+
+Large pizzas generate the highest share of sales
+
+Medium size is the second most popular
+
+Very low contribution from X-Large and XX-Large
+
+Insight
+
+Customers prefer value-for-money sizes rather than extremely large options.
+
+Business Reason
+
+Large pizzas balance price and quantity
+
+Extra-large pizzas may be perceived as expensive or unnecessary for most customers
+
+6. Top 5 Pizzas by Revenue
+
+Key Performers
+
+Thai Chicken Pizza
+
+Barbecue Pizza
+
+California Pizza
+
+Classic Deluxe Pizza
+
+Spicy Italian Pizza
+
+Insight
+
+A small number of pizzas contribute a disproportionately large share of revenue.
+
+Business Reason
+
+Popular flavors with consistent demand
+
+Often selected in combo meals or repeat orders
+
+Strong brand familiarity
+
+7. Top 5 Pizzas by Quantity Sold
+
+Observation
+
+Classic Deluxe Pizza leads in quantity
+
+Barbecue and Hawaiian pizzas follow closely
+
+Insight
+
+High quantity sold does not always mean highest revenue, but it indicates frequent customer preference.
+
+Business Reason
+
+These pizzas may be moderately priced
+
+Suitable for repeated purchases and group sharing
+
+8. Top 5 Pizzas by Total Orders
+
+Observation
+
+Classic Deluxe Pizza receives the highest number of orders
+
+Indicates strong repeat demand
+
+Insight
+
+Some pizzas may not be premium-priced but are customer favorites.
+
+Business Reason
+
+Familiar taste
+
+Suitable across age groups
+
+Reliable choice in mixed group orders
+
+9. Bottom 5 Pizzas – Revenue, Quantity & Orders
+Observation
+
+Pizzas like Brie Carre, Spinach, and Mediterranean variants consistently appear in bottom rankings
+
+Insight
+
+These pizzas show low demand across all metrics, not just revenue.
+
+Business Reason
+
+Niche flavors with limited audience
+
+Less visibility in promotions
+
+Higher price relative to perceived value
