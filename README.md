@@ -1,7 +1,7 @@
 # Pizza Sales Analysis
 ## 📌 Problem Statement & Chart Requirements
 
-![Problem Statement](dashboard.png)
+![Problem Statement](problem_statement.png)
 
 
 ## Business Problem
