@@ -27,7 +27,7 @@ Understand customer purchasing behavior
 This section explains the key insights derived from the Power BI dashboard, along with the possible business reasons behind observed trends. The focus is on business interpretation, not just numbers.
 
 1. Overall Business Performance (KPIs)
-   ![KPI view's](images/dashboard.png)
+   ![Business Performance (KPIs)](images/dashboard.png)
 
 - **Total Revenue:** ~$817.86K  
 - **Total Orders:** ~21,350  
