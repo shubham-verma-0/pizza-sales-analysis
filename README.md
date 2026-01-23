@@ -43,48 +43,53 @@ Business Reason
 Pizza is often consumed in groups, especially during weekends and evenings, which increases both order value and quantity per order.
 
 2. Daily Order Trend (Weekday Analysis)
+   
 ![Weekly Dashboard](images/Trends_by_weekday.png)
-Observation
+
+## Observation
 Orders gradually increase from Sunday to Friday
 Friday has the highest number of orders
 Slight drop observed on Saturday
 
-Insight
+## Insight
 Peak demand occurs on Friday and Saturday evenings
 Weekdays show stable but lower demand compared to weekends
 
-Business Reason
+## Business Reason
 End-of-week social gatherings, office parties, and family dinners drive higher sales
 Saturday drop may be due to customers preferring dine-out or alternative food options
 
 3. Monthly Order Trend (Seasonality)
+
 ![Monthly Dashboard](images/Monthly_trend.png)
 
-Observation
+## Observation
 July shows the highest order volume
 Strong performance also seen in January
 
 -- ** Noticeable dip during September and October
 
-Insight
+## Insight
 Sales show seasonal patterns
 Certain months consistently outperform others
-Business Reason
+
+## Business Reason
 
 July: Holiday season, summer breaks, and increased leisure time
 January: New Year celebrations and promotional offers
 September–October: Festival spending shifts towards home-cooked or traditional foods
 
 4. Sales by Pizza Category
+
 ![Pizza's category dashboard](images/sales_by_pizzacategory.png)
 
-Category Contribution
+## Category Contribution
 
 Classic category contributes the highest revenue and orders
 Supreme and Chicken categories follow closely
 Veggie category contributes the least
 
-Insight
+## Insight
 Customers show a strong preference for classic and familiar flavors.
 Business Reason
 Classic pizzas appeal to a broader audience
@@ -95,12 +100,12 @@ Veggie pizzas may cater to a smaller niche audience
 
 ![Pizza's Size dashboard](images/sales_by_pizza_size.png)
 
-Size Contribution
+## Size Contribution
 Large pizzas generate the highest share of sales
 Medium size is the second most popular
 Very low contribution from X-Large and XX-Large
 
-Insight
+## Insight
 Customers prefer value-for-money sizes rather than extremely large options.
 Business Reason
 Large pizzas balance price and quantity
@@ -134,15 +139,15 @@ Veggie category performs well overall, but internal competition causes some vegg
 
 ![Dasboard Top 5 pizza's totl order](images/top5pizzas_order.png)
 
-Observation
+## Observation
 Classic Deluxe Pizza receives the highest number of orders
 Indicates strong repeat demand
 
-Insight
+## Insight
 Some pizzas may not be premium-priced but are customer favorites.
 Business Reason
 
-Familiar taste
+## Familiar taste
 Suitable across age groups
 Reliable choice in mixed group orders
 
@@ -151,37 +156,37 @@ Reliable choice in mixed group orders
 
 ![Dasboard Top 5 pizza's sold by quantity ](images/top5pizzas_quantity.png)
 
-Observation
+## Observation
 Classic Deluxe Pizza leads in quantity
 Barbecue and Hawaiian pizzas follow closely
 
-Insight
+## Insight
 High quantity sold does not always mean highest revenue, but it indicates frequent customer preference.
 
-Business Reason
+## Business Reason
 These pizzas may be moderately priced
 Suitable for repeated purchases and group sharing
 
-8. Top 5 Pizzas by Revenue
+9. Top 5 Pizzas by Revenue
 
 ![Dasboard Revenue by Top 5 pizza's ](images/top5pizzas_revenue.png)
 
-Key Performers
+## Key Performers
 Thai Chicken Pizza
 Barbecue Pizza
 California Pizza
 Classic Deluxe Pizza
 Spicy Italian Pizza
 
-Insight
+## Insight
 A small number of pizzas contribute a disproportionately large share of revenue.
 
-Business Reason
+## Business Reason
 Popular flavors with consistent demand
 Often selected in combo meals or repeat orders
 Strong brand familiarity
 
-9.Bottom 10 Pizzas by Total Orders – Insights
+10. Bottom 10 Pizzas by Total Orders – Insights
 
 ![Bottam 5 pizzas total orders](images/bottom5pizzas_totalorders.png)
 
@@ -203,7 +208,7 @@ Considered “specialty” items rather than regular choices.
 ## Business Insight
 Order frequency is insufficient to sustain high sales impact. These pizzas do not benefit from repeat or bulk ordering patterns.
 
-10. Bottom 5 Pizzas by Quantity Sold – Insights
+11. Bottom 5 Pizzas by Quantity Sold – Insights
 
 ![ Bottom 5 Pizzas by Quantity](images/bottom5pizzas_sold_by_quantity.png)
 
@@ -227,7 +232,7 @@ Business Insight
 Quantity data confirms that low revenue is demand-driven, not pricing-driven. Marketing or combo offers would be required to improve movement.
 
 
-11. Bottom 5 Pizzas by Revenue – Insights
+12. Bottom 5 Pizzas by Revenue – Insights
 
 ![ Bottom 5 Pizzas by Revenue](images/bottom5pizzas_revenue.png)
 
