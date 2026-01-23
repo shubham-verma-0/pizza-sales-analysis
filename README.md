@@ -108,7 +108,7 @@ Extra-large pizzas may be perceived as expensive or unnecessary for most custome
 
 6.Total Pizzas Sold by Category – Insights
 
-![Total Pizzas Sold by Category](images/Total_soldpizza_bycategory.png)
+![Total Pizzas Sold by Category](images/Total_soldpizza's_bycategory.png)
 
 ## Key Observation
 
@@ -181,7 +181,7 @@ Popular flavors with consistent demand
 Often selected in combo meals or repeat orders
 Strong brand familiarity
 
-9.Bottom 5 Pizzas by Total Orders – Insights
+9.Bottom 10 Pizzas by Total Orders – Insights
 
 ![Bottam 5 pizzas total orders](images/bottom5pizzas_totalorders.png)
 
@@ -229,7 +229,7 @@ Quantity data confirms that low revenue is demand-driven, not pricing-driven. Ma
 
 11. Bottom 5 Pizzas by Revenue – Insights
 
-![ Bottom 5 Pizzas by Revenue](images/bottam5pizzas_revenue.png)
+![ Bottom 5 Pizzas by Revenue](images/bottom5pizzas_revenue.png)
 
 ## Key Observation
 Bottom 5 pizzas generate revenue in a narrow band of ~11.6K to ~15.6K, which is significantly lower compared to top-selling pizzas.
