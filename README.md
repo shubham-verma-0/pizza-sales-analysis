@@ -250,3 +250,12 @@ Even if prices are moderate, low demand volume keeps total revenue low.
 
 Menu Positioning
 These pizzas are likely overshadowed by popular categories such as Classic and Chicken, reducing visibility and selection.
+
+#### Conclusion 
+
+Business is volume-driven, led by Classic pizzas
+Customers mainly order for groups, averaging 2+ pizzas per order
+Fridays and weekends generate peak demand
+Clear seasonality: July & January high, Sep–Oct low
+Top pizzas drive most revenue; bottom pizzas fail due to low demand, not pricing
+Strategic focus: Promote Classic, bundle Supreme/Chicken, optimize low performers
