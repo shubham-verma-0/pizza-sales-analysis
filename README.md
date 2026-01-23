@@ -1,4 +1,4 @@
-🍕 Pizza Sales Analysis
+🍕  Pizza Sales Analysis
 ### Overview
 
 In this project, I analyzed pizza sales data to understand overall business performance, customer ordering behavior, and product-level trends.
@@ -6,13 +6,59 @@ The goal of this analysis was to convert raw transactional data into clear busin
 
 I used SQL for data analysis and Power BI for dashboard-based visualization, following a real-world analytics workflow.
 
-### Business Problem
+## Business Problem
 
-A pizza restaurant wants to answer key business questions such as:
-Which pizzas generate the most and least revenue?
-When do customers place the highest number of orders?
-How do pizza size and category affect sales performance?
-Which products should be promoted or reconsidered?
+The business wants to understand its sales performance and customer behavior to improve revenue and operational decisions.
+
+## Problem Statement
+
+This project analyzes pizza sales data to evaluate overall business performance, identify key trends, and uncover insights related to customer ordering behavior, product performance, and revenue drivers.
+
+## KPI Requirements
+
+To measure the performance of the pizza business, the following key performance indicators (KPIs) are calculated:
+
+1. **Total Revenue**  
+   The total income generated from all pizza orders.
+
+2. **Average Order Value (AOV)**  
+   The average amount spent per order, calculated as total revenue divided by the total number of orders.
+
+3. **Total Pizzas Sold**  
+   The total quantity of pizzas sold across all orders.
+
+4. **Total Orders**  
+   The total number of customer orders placed.
+
+5. **Average Pizzas per Order**  
+   The average number of pizzas sold per order, calculated by dividing total pizzas sold by total orders.
+
+---
+
+## Charts Requirements
+
+To visualize sales performance and uncover meaningful insights, the following charts are created:
+
+1. **Daily Trend for Total Orders**  
+   A bar chart showing daily order volume to identify patterns or fluctuations in customer demand.
+
+2. **Monthly Trend for Total Orders**  
+   A line chart illustrating monthly order trends to highlight seasonal patterns and long-term growth.
+
+3. **Percentage of Sales by Pizza Category**  
+   A pie chart displaying the contribution of each pizza category to total sales.
+
+4. **Percentage of Sales by Pizza Size**  
+   A pie chart representing sales distribution across different pizza sizes to understand customer size preferences.
+
+5. **Total Pizzas Sold by Pizza Category**  
+   A funnel chart comparing total quantities sold across pizza categories.
+
+6. **Top 5 Best-Selling Pizzas**  
+   Bar charts highlighting the top 5 pizzas based on revenue, total quantity sold, and total orders.
+
+7. **Bottom 5 Worst-Selling Pizzas**  
+   Bar charts identifying the bottom 5 underperforming pizzas based on revenue, quantity sold, and total orders.
 
 ### Objectives
 
