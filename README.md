@@ -106,8 +106,66 @@ Business Reason
 Large pizzas balance price and quantity
 Extra-large pizzas may be perceived as expensive or unnecessary for most customers
 
-6. Top 5 Pizzas by Revenue
+6.Total Pizzas Sold by Category – Insights
+
+![Total Pizzas Sold by Category](images/Total_soldpizza_bycategory.png)
+
+## Key Observation
+
+Classic category dominates (14,888 units).
+Followed by Supreme (11,987), Veggie (11,649), and Chicken (11,050).
+Demand drops steadily from Classic → Chicken.
+
+## Reasons
+
+Classic = Mass Appeal
+Simple flavors, wide acceptance, family-friendly — leads to maximum volume.
+
+Supreme Beats = Veggie & Chicken
+Reason for Good Sales: Balanced mix of meat + veggies → wide customer appeal
+
+Chicken Underperformance vs Expectation
+Despite popularity, Chicken pizzas sell less than Classic due to higher price points and dietary restrictions.
+
+Veggie Saturation
+Veggie category performs well overall, but internal competition causes some veggie pizzas to fall into bottom 5.
+
+7. Top 5 Pizzas by Total Orders
+
+![Dasboard Top 5 pizza's totl order](images/top5pizzas_order.png)
+
+Observation
+Classic Deluxe Pizza receives the highest number of orders
+Indicates strong repeat demand
+
+Insight
+Some pizzas may not be premium-priced but are customer favorites.
+Business Reason
+
+Familiar taste
+Suitable across age groups
+Reliable choice in mixed group orders
+
+
+8. Top 5 Pizzas by Quantity Sold
+
+![Dasboard Top 5 pizza's sold by quantity ](images/top5pizzas_quantity.png)
+
+Observation
+Classic Deluxe Pizza leads in quantity
+Barbecue and Hawaiian pizzas follow closely
+
+Insight
+High quantity sold does not always mean highest revenue, but it indicates frequent customer preference.
+
+Business Reason
+These pizzas may be moderately priced
+Suitable for repeated purchases and group sharing
+
+8. Top 5 Pizzas by Revenue
+
 ![Dasboard Revenue by Top 5 pizza's ](images/top5pizzas_revenue.png)
+
 Key Performers
 Thai Chicken Pizza
 Barbecue Pizza
@@ -123,46 +181,67 @@ Popular flavors with consistent demand
 Often selected in combo meals or repeat orders
 Strong brand familiarity
 
-7. Top 5 Pizzas by Quantity Sold
-![Dasboard Top 5 pizza's sold by quantity ](images/top5pizzas_quantity.png)
+9.Bottom 5 Pizzas by Total Orders – Insights
 
-Observation
-Classic Deluxe Pizza leads in quantity
-Barbecue and Hawaiian pizzas follow closely
+![Bottam 5 pizzas total orders](images/bottom5pizzas_totalorders.png)
 
-Insight
-High quantity sold does not always mean highest revenue, but it indicates frequent customer preference.
+## Key Observation
+Orders range from 480 to ~976, closely mirroring quantity trends.
+The Brie Carre Pizza (480 orders) again ranks last.
+Some pizzas have relatively high order counts but still appear here due to single-unit ordering behavior.
 
-Business Reason
-These pizzas may be moderately priced
-Suitable for repeated purchases and group sharing
+## Reasons
+Single-Pizza Orders
+These pizzas are often ordered alone, not in bulk, limiting volume impact.
 
-8. Top 5 Pizzas by Total Orders
-![Dasboard Top 5 pizza's totl order](images/top5pizzas_order.png)
+Low Cross-Selling Potential
+Customers rarely pair these pizzas with others.
 
-Observation
-Classic Deluxe Pizza receives the highest number of orders
-Indicates strong repeat demand
+Occasional Consumption
+Considered “specialty” items rather than regular choices.
 
-Insight
-Some pizzas may not be premium-priced but are customer favorites.
-Business Reason
+## Business Insight
+Order frequency is insufficient to sustain high sales impact. These pizzas do not benefit from repeat or bulk ordering patterns.
 
-Familiar taste
-Suitable across age groups
-Reliable choice in mixed group orders
+10. Bottom 5 Pizzas by Quantity Sold – Insights
 
-9. Bottom 5 Pizzas – Revenue, Quantity & Orders
-Observation
-Pizzas like Brie Carre, Spinach, and Mediterranean variants consistently appear in bottom rankings
-Insight
+![ Bottom 5 Pizzas by Quantity](images/bottom5pizzas_sold_by_quantity.png)
 
-These pizzas show low demand across all metrics, not just revenue.
 
-Business Reason
+## Key Observation
+Quantity sold ranges from ~490 to ~961 units.
+The Brie Carre Pizza (490 units) is a clear outlier with very low demand.
+Other pizzas cluster close together (~930–960 units), indicating uniformly weak demand.
 
-Niche flavors with limited audience
+## Reasons
+Low Customer Awareness / Preference
+Customers tend to choose familiar flavors; experimental or gourmet pizzas sell less.
 
-Less visibility in promotions
+Veggie Fatigue
+Multiple veggie-heavy pizzas compete with each other, splitting demand rather than growing it.
 
-Higher price relative to perceived value
+Order Bundling Effect
+These pizzas are rarely chosen as the “main” item in multi-pizza orders.
+
+Business Insight
+Quantity data confirms that low revenue is demand-driven, not pricing-driven. Marketing or combo offers would be required to improve movement.
+
+
+11. Bottom 5 Pizzas by Revenue – Insights
+
+![ Bottom 5 Pizzas by Revenue](images/bottam5pizzas_revenue.png)
+
+## Key Observation
+Bottom 5 pizzas generate revenue in a narrow band of ~11.6K to ~15.6K, which is significantly lower compared to top-selling pizzas.
+The Brie Carre Pizza is the lowest revenue contributor (~11.6K).
+Spinach- and Mediterranean-based pizzas appear multiple times, indicating consistent underperformance across variants.
+
+## Reason
+Lower Repeat Orders
+Such pizzas are often tried once but not reordered frequently, impacting cumulative revenue.
+
+Pricing vs Demand Mismatch
+Even if prices are moderate, low demand volume keeps total revenue low.
+
+Menu Positioning
+These pizzas are likely overshadowed by popular categories such as Classic and Chicken, reducing visibility and selection.
